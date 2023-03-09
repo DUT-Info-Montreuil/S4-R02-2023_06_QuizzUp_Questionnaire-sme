@@ -21,4 +21,25 @@ public class ChargementQuestionnaireTest {
         reponse.add(QuestionnaireCorrect);
         return reponse;
     }
+    public List<QuestionDTO> chargementQuestionnaireTestVide(){
+        IServiceQuestion serviceatester = new ChargementQuestionnaireImplmockOk();
+        QuestionDTO objetattendue = new QuestionDTO();
+        List<QuestionDTO> questionattendue = new ArrayList<QuestionDTO>();
+        questionattendue.add(objetattendue);
+        QuestionnaireDTO QuestionnaireIncorrect = new QuestionnaireDTO(questionattendue);
+        List<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
+        reponse.add(QuestionnaireIncorrect);
+        return reponse;
+    }
+
+    public List<QuestionDTO> chargementQuestionnaireTestError(){
+        IServiceQuestion serviceatester = new ChargementQuestionnaireImplmockOk();
+        QuestionDTO objetattendue = new QuestionDTO();
+        List<QuestionDTO> questionattendue = new ArrayList<QuestionDTO>();
+        questionattendue.add(objetattendue);
+        QuestionnaireDTO QuestionnaireError = new QuestionnaireDTO(questionattendue);
+        List<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
+        reponse.add(QuestionnaireError);
+        return reponse;
+    }
 }
