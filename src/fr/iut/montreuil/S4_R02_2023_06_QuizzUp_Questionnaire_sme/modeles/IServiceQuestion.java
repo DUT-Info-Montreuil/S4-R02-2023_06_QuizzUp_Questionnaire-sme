@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface IServiceQuestion {
     public List<QuestionnaireDTO> fournirListeQuestionnaires(String nomFichier);
-    public QuestionnaireDTO fournirUnQuestionnaire(int indiceQuestionnaire);
+    public QuestionnaireDTO fournirUnQuestionnaire(String nomFichier, int indiceQuestionnaire);
 
 }
