@@ -5,41 +5,27 @@ import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.Qu
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceQuestion;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.test.service.mock.ChargementQuestionnaireImplmockOk;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChargementQuestionnaireTest {
+import static org.mockito.Mockito.when;
+
+public class ChargementQuestionnaireTest  {
+    private IServiceQuestion serviceQuestionnaireTest;
     @Test
-    public List<QuestionDTO> chargementQuestionnaireTestOk(){
+    public List<QuestionnaireDTO> chargementQuestionnaireTestOk(){
         IServiceQuestion serviceatester = new ChargementQuestionnaireImplmockOk();
         QuestionDTO objetattendue = new QuestionDTO(1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok");
-        List<QuestionDTO> questionattendue = new ArrayList<QuestionDTO>();
+        ArrayList<QuestionDTO> questionattendue = new ArrayList<QuestionDTO>();
         questionattendue.add(objetattendue);
-        QuestionnaireDTO QuestionnaireCorrect = new QuestionnaireDTO(questionattendue);
+        QuestionnaireDTO QuestionnaireCorrect = new QuestionnaireDTO(1, questionattendue);
         List<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
         reponse.add(QuestionnaireCorrect);
-        return reponse;
-    }
-    public List<QuestionDTO> chargementQuestionnaireTestVide(){
-        IServiceQuestion serviceatester = new ChargementQuestionnaireImplmockOk();
-        QuestionDTO objetattendue = new QuestionDTO();
-        List<QuestionDTO> questionattendue = new ArrayList<QuestionDTO>();
-        questionattendue.add(objetattendue);
-        QuestionnaireDTO QuestionnaireIncorrect = new QuestionnaireDTO(questionattendue);
-        List<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
-        reponse.add(QuestionnaireIncorrect);
-        return reponse;
-    }
-
-    public List<QuestionDTO> chargementQuestionnaireTestError(){
-        IServiceQuestion serviceatester = new ChargementQuestionnaireImplmockOk();
-        QuestionDTO objetattendue = new QuestionDTO();
-        List<QuestionDTO> questionattendue = new ArrayList<QuestionDTO>();
-        questionattendue.add(objetattendue);
-        QuestionnaireDTO QuestionnaireError = new QuestionnaireDTO(questionattendue);
-        List<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
-        reponse.add(QuestionnaireError);
         return reponse;
     }
 }
