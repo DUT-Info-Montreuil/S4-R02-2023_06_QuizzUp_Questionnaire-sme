@@ -1,41 +1,53 @@
 package fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.impl;
 
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.bo.QuestionnaireBO;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.QuestionDTO;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.QuestionnaireDTO;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierIncorrectExceptions;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierPasTrouveExceptions;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierVideExceptions;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceQuestion;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import com.opencsv.CSVParser;
-import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
 public class ServiceQuestionnaireImpl implements IServiceQuestion {
 
+    private QuestionnaireBO questionnaireBO;
+
     @Override
-    public List<QuestionnaireDTO> fournirListeQuestionnaires(String nomFichier) {
-        ArrayList<QuestionnaireDTO> questionnaires = new ArrayList<QuestionnaireDTO>();
+    public List<QuestionnaireDTO> fournirListeQuestionnaires(String nomFichier) throws FichierIncorrectExceptions, FichierVideExceptions, FichierPasTrouveExceptions {
+        ArrayList<QuestionnaireDTO> questionnairesDTO = new ArrayList<QuestionnaireDTO>();
 
         try (CSVReader reader = new CSVReader(new FileReader(nomFichier))) {
             String[] fields;
-            int currentQuestionnaireId = -1;
-            ArrayList<QuestionDTO> currentQuestions = new ArrayList<QuestionDTO>();
-
+            //int currentQuestionnaireId = -1;
+            //ArrayList<QuestionDTO> currentQuestions = new ArrayList<QuestionDTO>();
             while ((fields = reader.readNext()) != null) {
+                questionnaireBO.getIdQuestionnaires().add(Integer.parseInt(fields[0]));
+                questionnaireBO.getNumQuestions().add(Integer.parseInt(fields[1]));
+                questionnaireBO.getLangues().add(fields[2]);
+                questionnaireBO.getLibelles().add(fields[3]);
+                questionnaireBO.getReponses().add(fields[4]);
+                questionnaireBO.getDifficultes().add(Integer.parseInt(fields[5]));
+                questionnaireBO.getExplications().add(fields[6]);
+                questionnaireBO.getReferences().add(fields[7]);
+
+                /* 
                 int questionnaireId = Integer.parseInt(fields[0]);
                 if (questionnaireId != currentQuestionnaireId) {
                     if (currentQuestionnaireId != -1) {
                         questionnaires.add(new QuestionnaireDTO(currentQuestionnaireId, currentQuestions));
                     }
-                    // Start a new questionnaire
                     currentQuestionnaireId = questionnaireId;
                     currentQuestions = new ArrayList<QuestionDTO>();
                 }
 
-                // Create a new question and add it to the current questionnaire
                 int questionId = Integer.parseInt(fields[1]);
                 String langage = fields[2];
                 String libelle = fields[3];
@@ -44,24 +56,44 @@ public class ServiceQuestionnaireImpl implements IServiceQuestion {
                 String explication = fields[6];
                 String reference = fields[7];
                 currentQuestions.add(new QuestionDTO(questionId, langage, libelle, reponse, difficulte, explication, reference));
+                */
             }
-
-            // Add the last questionnaire to the list, if any
+            /* 
             if (currentQuestionnaireId != -1) {
-                questionnaires.add(new QuestionnaireDTO(currentQuestionnaireId, currentQuestions));
+                questionnairesDTO.add(new QuestionnaireDTO(currentQuestionnaireId, currentQuestions));
+            }*/
+            if (questionnaireBO.getIdQuestionnaires().size() == 0) {
+                throw new FichierVideExceptions();
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            throw new FichierPasTrouveExceptions();
+        } catch (NumberFormatException e) {
+            throw new FichierIncorrectExceptions();
+        }  catch (ArrayIndexOutOfBoundsException e) {
+            throw new FichierIncorrectExceptions();
         } catch (CsvValidationException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        int i = 0;
+        int idQuestionnaire;
+        ArrayList<QuestionDTO> questionsDTO;
 
-        return questionnaires;    
+        while (i < questionnaireBO.getIdQuestionnaires().size()) {
+            questionsDTO = new ArrayList<QuestionDTO>();
+            idQuestionnaire = questionnaireBO.getIdQuestionnaires().get(i);
+            while (i < questionnaireBO.getIdQuestionnaires().size() && questionnaireBO.getIdQuestionnaires().get(i) == idQuestionnaire) {
+                questionsDTO.add(new QuestionDTO(questionnaireBO.getNumQuestions().get(i), questionnaireBO.getLibelles().get(i), questionnaireBO.getReponses().get(i), questionnaireBO.getLangues().get(i), questionnaireBO.getDifficultes().get(i), questionnaireBO.getExplications().get(i), questionnaireBO.getReferences().get(i)));
+                i++;
+            }
+            questionnairesDTO.add(new QuestionnaireDTO(idQuestionnaire, questionsDTO));
+        }
+        return questionnairesDTO;
     }
 
     @Override
-    public QuestionnaireDTO fournirUnQuestionnaire(String nomFichier, int indiceQuestionnaire) {
+    public QuestionnaireDTO fournirUnQuestionnaire(String nomFichier, int indiceQuestionnaire) throws FichierIncorrectExceptions, FichierVideExceptions, FichierPasTrouveExceptions {
         List<QuestionnaireDTO> questionnaires = fournirListeQuestionnaires(nomFichier);
         if (indiceQuestionnaire >= 0 && indiceQuestionnaire < questionnaires.size()) {
             return questionnaires.get(indiceQuestionnaire);
