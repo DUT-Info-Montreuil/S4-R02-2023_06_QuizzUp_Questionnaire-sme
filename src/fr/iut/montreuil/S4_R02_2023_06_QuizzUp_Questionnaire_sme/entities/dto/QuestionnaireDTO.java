@@ -5,6 +5,15 @@ import java.util.ArrayList;
 public class QuestionnaireDTO {
     private int id_questionnaire;
     private ArrayList<QuestionDTO> questions;
+    private int nbjouer;
+
+    public int getNbjouer() {
+        return nbjouer;
+    }
+
+    public void setNbjouer(int nbjouer) {
+        this.nbjouer = nbjouer;
+    }
 
     public QuestionnaireDTO(int id_questionnaire, ArrayList<QuestionDTO> questions) {
         this.id_questionnaire = id_questionnaire;
@@ -27,5 +36,12 @@ public class QuestionnaireDTO {
         this.questions = questions;
     }
 
-    
+    @Override
+    public String toString() {
+        return "QuestionnaireDTO{" +
+                "id_questionnaire=" + id_questionnaire +
+                ", questions=" + questions +
+                ", nbjouer=" + nbjouer +
+                '}';
+    }
 }
