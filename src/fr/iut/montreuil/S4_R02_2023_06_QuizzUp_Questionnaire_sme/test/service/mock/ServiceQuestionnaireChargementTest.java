@@ -6,6 +6,7 @@ import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.Qu
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierIncorrectExceptions;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierPasTrouveExceptions;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierVideExceptions;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.impl.ServiceQuestionnaireImpl;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceQuestion;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -30,12 +31,9 @@ public class ServiceQuestionnaireChargementTest  {
     }
     @Test
     public void chargementQuestionnaireIncorrect() throws FichierIncorrectExceptions, FichierPasTrouveExceptions, FichierVideExceptions {
-        serviceQuestionnaireTest = new ChargementQuestionnaireImplmockOk();
-        // QuestionDTO questionIncorrectAttendu = new QuestionDTO("De quel petit objet se munit le golfeur pour surelever sa balle avant de la frapper ",null);
-        //serviceQuestionnaireTest.chargerListeQuestionnaire("chargementIncorrect.csv");
+        serviceQuestionnaireTest = new ServiceQuestionnaireImpl();
         Assertions.assertThrows(FichierIncorrectExceptions.class, ()->
                 serviceQuestionnaireTest.fournirListeQuestionnaires("chargementIncorrect.csv"),"Valeur incorrect ou manquante");
-
     }
 
     @Test
@@ -47,7 +45,7 @@ public class ServiceQuestionnaireChargementTest  {
 
     @Test
     public void chargementQuestionnaireNomInvalide() throws FichierIncorrectExceptions, FichierPasTrouveExceptions, FichierVideExceptions {
-        serviceQuestionnaireTest = new ChargementQuestionnaireImplmockInvalide();
+        serviceQuestionnaireTest = new ServiceQuestionnaireImpl();
         Assertions.assertThrows(FichierPasTrouveExceptions.class, ()->
                 serviceQuestionnaireTest.fournirListeQuestionnaires("okok.csv"),"Nom du fichier incorrect ou inexistant");
     }
