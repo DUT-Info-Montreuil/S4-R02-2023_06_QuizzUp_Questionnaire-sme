@@ -25,13 +25,13 @@ public class ServiceQuestionnaireChargementTest  {
         QuestionnaireDTO QuestionnaireCorrect = new QuestionnaireDTO(1, questionattendue);
         ArrayList<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
         reponse.add(QuestionnaireCorrect);
-        ArrayList<QuestionnaireDTO> reponsecorrect = (ArrayList<QuestionnaireDTO>) serviceQuestionnaireTest.fournirListeQuestionnaires("test");
+        ArrayList<QuestionnaireDTO> reponsecorrect = (ArrayList<QuestionnaireDTO>) serviceQuestionnaireTest.fournirListeQuestionnaires("questionsQuizz_V1.1.csv");
         Assertions.assertEquals(QuestionnaireCorrect.getId_questionnaire(), reponsecorrect.get(0).getId_questionnaire());
         Assertions.assertEquals(reponse.get(0).getQuestions().get(0).getLibelle(), reponsecorrect.get(0).getQuestions().get(0).getLibelle());
     }
     @Test
     public void chargementQuestionnaireIncorrect() throws FichierIncorrectExceptions, FichierPasTrouveExceptions, FichierVideExceptions {
-        serviceQuestionnaireTest = new ServiceQuestionnaireImpl();
+        serviceQuestionnaireTest = new ChargementQuestionnaireImplmockInvalide();
         Assertions.assertThrows(FichierIncorrectExceptions.class, ()->
                 serviceQuestionnaireTest.fournirListeQuestionnaires("chargementIncorrect.csv"),"Valeur incorrect ou manquante");
     }
