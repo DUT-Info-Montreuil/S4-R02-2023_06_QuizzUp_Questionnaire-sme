@@ -19,7 +19,7 @@ public class ServiceQuestionnaireChargementTest  {
     @Test
     public void ChargementQuestionnaireCorrect() throws FichierPasTrouveExceptions, FichierVideExceptions, FichierIncorrectExceptions {
         serviceQuestionnaireTest = new ChargementQuestionnaireImplmockOk();
-        QuestionDTO objetattendue = new QuestionDTO(1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok");
+        QuestionDTO objetattendue = new QuestionDTO(1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok", 0, 0);
         ArrayList<QuestionDTO> questionattendue = new ArrayList<QuestionDTO>();
         questionattendue.add(objetattendue);
         QuestionnaireDTO QuestionnaireCorrect = new QuestionnaireDTO(1, questionattendue);
