@@ -6,7 +6,7 @@ import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.Qu
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.QuestionnaireDTO;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.StatsDTO;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.StatsQuestDTO;
-import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.NbDeFoisJoueQuestionnaireIncorrectExeptions;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.NbFoisJoueQuestionnaireIncorrectExeptions;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.StatsQuestionsIncorrectExeptions;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceStatsQuestionnaire;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.test.service.mock.ServiceStatsQuestionnaireMockCorrect;
@@ -19,7 +19,7 @@ public class ServiceStatsQuestionnaireTest {
     private IServiceStatsQuestionnaire serviceStatsQuestionnaireTest;
 
     @Test
-    public void statsQuestionnaireCorrect() throws StatsQuestionsIncorrectExeptions, NbDeFoisJoueQuestionnaireIncorrectExeptions {
+    public void statsQuestionnaireCorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions {
         serviceStatsQuestionnaireTest = new ServiceStatsQuestionnaireMockCorrect();
 
         //creation d'un BilanStatsDTO
@@ -41,12 +41,13 @@ public class ServiceStatsQuestionnaireTest {
         Assertions.assertEquals(bilanStatsDTO.toString(), serviceStatsQuestionnaireTest.fournirStatsQuestions(questionnaireDTO).toString());
     }
 
-    public void nbDeFoisJoueQuestionnaireIncorrect() throws StatsQuestionsIncorrectExeptions, NbDeFoisJoueQuestionnaireIncorrectExeptions {
-        
+    public void statsQuestionsIncorrectIncorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions {
+
     }
 
-    public void statsQuestionsIncorrectIncorrect() throws StatsQuestionsIncorrectExeptions, NbDeFoisJoueQuestionnaireIncorrectExeptions {
-
+    
+    public void nbFoisJoueQuestionnaireIncorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions {
+        
     }
 
 
