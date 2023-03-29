@@ -6,10 +6,12 @@ public class QuestionnaireDTO {
     private int id_questionnaire;
     private ArrayList<QuestionDTO> questions;
     private static int idNow;
+    private int nbjouer;
 
-    public QuestionnaireDTO(int id_questionnaire, ArrayList<QuestionDTO> questions) {
+    public QuestionnaireDTO(int id_questionnaire, ArrayList<QuestionDTO> questions, int nbjouer) {
         this.id_questionnaire = idNow ++;
         this.questions = questions;
+        this.nbjouer=0;
     }
 
     public int getId_questionnaire() {
@@ -28,11 +30,20 @@ public class QuestionnaireDTO {
         this.questions = questions;
     }
 
+    public int getNbjouer() {
+        return nbjouer;
+    }
+
+    public void setNbjouer(int nbjouer) {
+        this.nbjouer = nbjouer;
+    }
+
     @Override
     public String toString() {
         return "QuestionnaireDTO{" +
                 "id_questionnaire=" + id_questionnaire +
                 ", questions=" + questions +
+                ", nbjouer=" + nbjouer +
                 '}';
     }
 }

@@ -84,7 +84,7 @@ public class ServiceQuestionnaireImpl implements IServiceQuestion {
             questionsDTO = new ArrayList<QuestionDTO>();
             idQuestionnaire = questionnaireBO.getIdQuestionnaires().get(i);
             while (i < questionnaireBO.getIdQuestionnaires().size() && questionnaireBO.getIdQuestionnaires().get(i) == idQuestionnaire) {
-                questionsDTO.add(new QuestionDTO(questionnaireBO.getNumQuestions().get(i), questionnaireBO.getLibelles().get(i), questionnaireBO.getReponses().get(i), questionnaireBO.getLangues().get(i), questionnaireBO.getDifficultes().get(i), questionnaireBO.getExplications().get(i), questionnaireBO.getReferences().get(i)));
+                questionsDTO.add(new QuestionDTO(questionnaireBO.getIdQuestionnaires().get(i), questionnaireBO.getNumQuestions().get(i), questionnaireBO.getLibelles().get(i), questionnaireBO.getReponses().get(i), questionnaireBO.getLangues().get(i), questionnaireBO.getDifficultes().get(i), questionnaireBO.getExplications().get(i), questionnaireBO.getReferences().get(i)));
                 i++;
             }
             questionnairesDTO.add(new QuestionnaireDTO(idQuestionnaire, questionsDTO));

@@ -45,19 +45,21 @@ public class StatsDTO{
 
     public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions) {
         questions.sort(Comparator.comparing(QuestionDTO::getDifficulte).reversed()
-                                  .thenComparing(StatsQuestDTO::getNbjouer)
-                                  .thenComparing(QuestionDTO::getNumero));
-    
+                .thenComparing(StatsQuestDTO::getNbjouer)
+                .thenComparing(QuestionDTO::getNumero));
+
         StatsQuestDTO questionFacile = questions.get(0);
         return questionFacile;
     }
+
     public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions){
         questions.sort(Comparator.comparing(QuestionDTO::getDifficulte)
-                                          .thenComparing(StatsQuestDTO::getNbjouer)
-                                          .thenComparing(QuestionDTO::getNumero));
+                .thenComparing(StatsQuestDTO::getNbjouer)
+                .thenComparing(QuestionDTO::getNumero));
         StatsQuestDTO questionDûre = questions.get(0);
-    return questionDûre;
+        return questionDûre;
     }
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Statistique du questionnaire ").append(idQuestionnaire).append(" :\n");
@@ -66,13 +68,13 @@ public class StatsDTO{
         sb.append("  La question avec le meilleur taux de réussite est :\n");
         QuestionDTO meilleureQuestion = trouverQuestionLaPlusFacile(getStatQuestDTO());
         sb.append("    ").append(meilleureQuestion.getLibelle()).append(" Avec ")
-            .append(meilleureQuestion.getNbOk()).append(" bonnes réponses sur ")
-            .append(meilleureQuestion.getNbjouer()).append(".\n");
+            .append(meilleureQuestion.getStats().getNbOk()).append(" bonnes réponses sur ")
+            .append(meilleureQuestion.getStats().getNbjouer()).append(".\n");
         sb.append("  La question avec le pire taux de réussite est :\n");
         QuestionDTO pireQuestion = trouverQuestionLaPlusDure(getStatQuestDTO());
         sb.append("    ").append(pireQuestion.getLibelle()).append(" Avec ")
-            .append(pireQuestion.getNbOk()).append(" bonnes réponses sur ")
-            .append(pireQuestion.getNbjouer()).append(".\n");
+            .append(pireQuestion.getStats().getNbOk()).append(" bonnes réponses sur ")
+            .append(pireQuestion.getStats().getNbjouer()).append(".\n");
         return sb.toString();
     }
 }

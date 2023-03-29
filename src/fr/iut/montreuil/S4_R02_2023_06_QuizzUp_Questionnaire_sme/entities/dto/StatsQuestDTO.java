@@ -33,4 +33,5 @@ public class StatsQuestDTO{
     public void incrementerNbCorrecte() {
         nbOk++;
     }
+
 }
