@@ -20,21 +20,23 @@ public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
 
     @Override
     public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions) {
-        questions.sort(Comparator.comparing(QuestionDTO::getDifficulte).reversed()
-                .thenComparing(StatsQuestDTO::getNbjouer)
+        questions.sort(Comparator.comparing(StatsQuestDTO::getNbOk).reversed()
+                .thenComparing(QuestionDTO::getDifficulte).reversed()
+                .thenComparingInt(StatsQuestDTO::getNbjouer)
                 .thenComparing(QuestionDTO::getNumero));
 
-        StatsQuestDTO questionFacile = questions.get(0);
-        return questionFacile;
+        return questions.get(0);
     }
 
+
     @Override
-    public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions){
-        questions.sort(Comparator.comparing(QuestionDTO::getDifficulte)
-                .thenComparing(StatsQuestDTO::getNbjouer)
+    public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions) {
+        questions.sort(Comparator.comparing(StatsQuestDTO::getNbOk)
+                .thenComparing(QuestionDTO::getDifficulte)
+                .thenComparingInt(StatsQuestDTO::getNbjouer)
                 .thenComparing(QuestionDTO::getNumero));
-        StatsQuestDTO questionDûre = questions.get(0);
-        return questionDûre;
+
+        return questions.get(0);
     }
 
 }
