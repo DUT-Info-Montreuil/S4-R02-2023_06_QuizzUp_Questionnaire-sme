@@ -24,19 +24,21 @@ public class ServiceStatsQuestionnaireTest {
 
         //creation d'un BilanStatsDTO
         ArrayList<StatsQuestDTO> statsQuestions = new ArrayList<>();
-        StatsQuestDTO statsQuestionsDTO = new StatsQuestDTO(5, 2);
-        statsQuestions.add(statsQuestionsDTO);
-        statsQuestions.add(new StatsQuestDTO(0, 0));
+        StatsQuestDTO statsQuestionDTO = new StatsQuestDTO();
+        statsQuestionDTO.setNbjouer(5);
+        statsQuestionDTO.setNbOk(2);
+        statsQuestions.add(statsQuestionDTO);
+        statsQuestions.add(new StatsQuestDTO());
         StatsDTO bilanStatsDTO = new StatsDTO(statsQuestions, 5, 1);
 
         //creation d'un QuestionnaireDTO
         ArrayList<QuestionDTO> listeQuestions = new ArrayList<>();
-        QuestionDTO questionDTO = new QuestionDTO(1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok", 2, 5);
+        QuestionDTO questionDTO = new QuestionDTO(5, 1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok");
         listeQuestions.add(questionDTO);
-        listeQuestions.add(new QuestionDTO(1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok", 0, 0));
-        listeQuestions.add(new QuestionDTO(1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok", 0, 0));
+        listeQuestions.add(new QuestionDTO(5, 1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok"));
+        listeQuestions.add(new QuestionDTO(5, 1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok"));
         QuestionnaireDTO questionnaireDTO = new QuestionnaireDTO(1, listeQuestions);
-        questionnaireDTO.setNbjouer(5);
+        questionnaireDTO.setNbJouer(5);
 
         Assertions.assertEquals(bilanStatsDTO.toString(), serviceStatsQuestionnaireTest.fournirStatsQuestions(questionnaireDTO).toString());
     }
