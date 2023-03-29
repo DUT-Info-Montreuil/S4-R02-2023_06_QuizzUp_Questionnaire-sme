@@ -4,64 +4,65 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class StatsDTO{
-    private ArrayList<QuestionDTO> statQuestDTO = new ArrayList<>();
-    private int nbjouerQuest;
-    private int idQuestion;
-    private QuestionnaireDTO quest = new QuestionnaireDTO(idQuestion, statQuestDTO);
-    private QuestionDTO q = new QuestionDTO(1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok", 0, 0);
+    private ArrayList<StatsQuestDTO> statQuestDTO;
+    private int idQuestionnaire;
+    private int nbJouer;
 
     
-    public StatsDTO(ArrayList<QuestionDTO> statQuestDTO, int nbjouerQuest, int idQuestion) {
-        this.statQuestDTO = statQuestDTO;
-        this.nbjouerQuest = nbjouerQuest;
-        this.idQuestion = idQuestion;
+    public StatsDTO(ArrayList<StatsQuestDTO> statQuestDTO, int idQuestionnaire, int nbJouer) {
+        this.statQuestDTO = new ArrayList<StatsQuestDTO>();
+        this.idQuestionnaire = idQuestionnaire;
+        this.nbJouer = nbJouer;
     }
 
-    public ArrayList<QuestionDTO> getStatQuestDTO() {
+    public int getIdQuestionnaire() {
+        return idQuestionnaire;
+    }
+
+    public void setIdQuestionnaire(int idQuestionnaire) {
+        this.idQuestionnaire = idQuestionnaire;
+    }
+
+    public void addStatsQuestionDTO(StatsQuestDTO stat){
+        statQuestDTO.add(stat);
+    }
+
+    public int getNbJouer() {
+        return nbJouer;
+    }
+
+    public void setStatQuestDTO(ArrayList<StatsQuestDTO> statQuestDTO) {
+        this.statQuestDTO = statQuestDTO;
+    }
+
+    public void setNbJouer(int nbJouer) {
+        this.nbJouer = nbJouer;
+    }
+
+    public ArrayList<StatsQuestDTO> getStatQuestDTO() {
         return statQuestDTO;
     }
 
-    public void setStatQuestDTO(ArrayList<QuestionDTO> statQuestDTO) {
-        this.statQuestDTO = statQuestDTO;
-    }
-
-    public int getNbjouerQuest() {
-        return nbjouerQuest;
-    }
-
-    public void setNbjouerQuest(int nbjouerQuest) {
-        this.nbjouerQuest = nbjouerQuest;
-    }
-
-    public int getIdQuestion() {
-        return idQuestion;
-    }
-
-    public void setIdQuestion(int idQuestion) {
-        this.idQuestion = idQuestion;
-    }
-    public QuestionDTO trouverQuestionLaPlusFacile(ArrayList<QuestionDTO> questions) {
-        // trier les questions par ordre de difficulté décroissante, puis par nombre de fois jouée croissant, puis par numéro de question croissant
+    public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions) {
         questions.sort(Comparator.comparing(QuestionDTO::getDifficulte).reversed()
-                                  .thenComparing(StatsDTO::getNbjouerQuest)
-                                  .thenComparing(QuestionDTO::getIdQuestion));
+                                  .thenComparing(StatsQuestDTO::getNbjouer)
+                                  .thenComparing(QuestionDTO::getNumero));
     
-        // retourner la première question dans la liste triée
-        QuestionDTO questionFacile = questions.get(0);
+        StatsQuestDTO questionFacile = questions.get(0);
         return questionFacile;
     }
-    public QuestionDTO trouverQuestionLaPlusDure(ArrayList<QuestionDTO> questions){
+    public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions){
         questions.sort(Comparator.comparing(QuestionDTO::getDifficulte)
-                                          .thenComparing(StatsDTO::getNbjouerQuest)
+                                          .thenComparing(StatsQuestDTO::getNbjouer)
                                           .thenComparing(QuestionDTO::getNumero));
-        QuestionDTO questionDûre = questions.get(0);
+        StatsQuestDTO questionDûre = questions.get(0);
     return questionDûre;
     }
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Statistique du questionnaire ").append(quest.getId_questionnaire()).append(" :\n");
-        sb.append("  Le questionnaire ").append(quest.getId_questionnaire()).append(" a été joué :\n");
-        sb.append("    ").append(quest.getNbjouer()).append(" fois.\n");
+        sb.append("Statistique du questionnaire ").append(idQuestionnaire).append(" :\n");
+        sb.append("  Le questionnaire ").append(idQuestionnaire).append(" a été joué :\n");
+        sb.append("    ").append(nbJouer).append(" fois.\n");
         sb.append("  La question avec le meilleur taux de réussite est :\n");
         QuestionDTO meilleureQuestion = trouverQuestionLaPlusFacile(getStatQuestDTO());
         sb.append("    ").append(meilleureQuestion.getLibelle()).append(" Avec ")

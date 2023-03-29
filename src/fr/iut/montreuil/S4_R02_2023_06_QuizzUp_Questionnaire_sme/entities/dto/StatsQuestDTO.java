@@ -5,9 +5,9 @@ public class StatsQuestDTO{
     private int nbjouer;
     private int nbOk;
 
-    public StatsQuestDTO(int nbjouer, int nbOk) {
-        this.nbjouer = nbjouer;
-        this.nbOk = nbOk;
+    public StatsQuestDTO() {
+        this.nbjouer = 0;
+        this.nbOk = 0;
     }
 
     public int getNbjouer() {
@@ -24,5 +24,13 @@ public class StatsQuestDTO{
 
     public void setNbOk(int nbOk) {
         this.nbOk = nbOk;
+    }
+
+    public void incrementerNbJouer() {
+        nbjouer++;
+    }
+
+    public void incrementerNbCorrecte() {
+        nbOk++;
     }
 }

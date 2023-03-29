@@ -2,6 +2,8 @@ package fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto;
 
 
 public class QuestionDTO {
+
+    private int idQuestionnaire;
     private int numero;
     private String langue;
     private String libelle;
@@ -9,11 +11,11 @@ public class QuestionDTO {
     private int difficulte;
     private String explication;
     private String reference;
-    private int nbjouer;
-    private int nbOk;
+    private StatsQuestDTO stats;
 
 
-    public QuestionDTO(int numero, String langue, String libelle, String reponse, int difficulte, String explication, String reference, int nbjouer, int nbOk) {
+    public QuestionDTO(int idQuestionnaire, int numero, String langue, String libelle, String reponse, int difficulte, String explication, String reference) {
+        this.idQuestionnaire=idQuestionnaire;
         this.numero = numero;
         this.langue = langue;
         this.libelle = libelle;
@@ -21,8 +23,15 @@ public class QuestionDTO {
         this.difficulte = difficulte;
         this.explication = explication;
         this.reference = reference;
-        this.nbjouer = 0;
-        this.nbOk = 0;
+        this.stats = new StatsQuestDTO();
+    }
+
+    public int getIdQuestionnaire() {
+        return idQuestionnaire;
+    }
+
+    public void setIdQuestionnaire(int idQuestionnaire) {
+        this.idQuestionnaire = idQuestionnaire;
     }
 
     public int getNumero() {
@@ -81,20 +90,22 @@ public class QuestionDTO {
         this.reference = reference;
     }
 
-    public int getNbjouer() {
-        return nbjouer;
+    public StatsQuestDTO getStats() {
+        return stats;
     }
 
-    public void setNbjouer(int nbjouer) {
-        this.nbjouer = nbjouer;
+    public void setStats(StatsQuestDTO stats) {
+        this.stats = stats;
     }
 
-    public int getNbOk() {
-        return nbOk;
+    public StatsQuestDTO getStatsQuestionDTO() {
+        return stats;
     }
 
-    public void setNbOk(int nbOk) {
-        this.nbOk = nbOk;
+    @Override
+    public String toString() {
+        return "Questionnaire [IdQuestionnaire=" + idQuestionnaire + ", numQuestion=" + numero + ", langue=" + langue
+                + ", libelleQuestion=" + libelle + ", reponse=" + reponse + ", difficulte=" + difficulte
+                + ", explication=" + explication + ", reference=" + reference + "]";
     }
-    
 }

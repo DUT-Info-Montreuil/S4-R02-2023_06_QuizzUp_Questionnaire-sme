@@ -5,18 +5,10 @@ import java.util.ArrayList;
 public class QuestionnaireDTO {
     private int id_questionnaire;
     private ArrayList<QuestionDTO> questions;
-    private int nbjouer;
-
-    public int getNbjouer() {
-        return nbjouer;
-    }
-
-    public void setNbjouer(int nbjouer) {
-        this.nbjouer = nbjouer;
-    }
+    private static int idNow;
 
     public QuestionnaireDTO(int id_questionnaire, ArrayList<QuestionDTO> questions) {
-        this.id_questionnaire = id_questionnaire;
+        this.id_questionnaire = idNow ++;
         this.questions = questions;
     }
 
@@ -41,7 +33,6 @@ public class QuestionnaireDTO {
         return "QuestionnaireDTO{" +
                 "id_questionnaire=" + id_questionnaire +
                 ", questions=" + questions +
-                ", nbjouer=" + nbjouer +
                 '}';
     }
 }
