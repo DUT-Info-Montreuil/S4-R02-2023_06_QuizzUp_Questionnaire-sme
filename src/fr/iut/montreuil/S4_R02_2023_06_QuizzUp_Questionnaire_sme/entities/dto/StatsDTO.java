@@ -45,17 +45,7 @@ public class StatsDTO{
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Statistiques du questionnaire ").append(idQuestionnaire).append(" :\n");
-        sb.append("  Le questionnaire ").append(idQuestionnaire).append(" a été joué :\n");
-        sb.append("    ").append(nbJouer).append(" fois.\n");
-        sb.append("  La question avec le meilleur taux de réussite est :\n");
-        sb.append("    ").append(getStatQuestDTO().get(0).toString()).append("\n");
-        sb.append("  La question avec le pire taux de réussite est :\n");
-        sb.append("    ").append(getStatQuestDTO().get(0).toString()).append("\n");
-        return sb.toString();
+        return "StatsDTO [statQuestDTO=" + statQuestDTO + ", idQuestionnaire=" + idQuestionnaire + ", nbJouer="
+                + nbJouer + "]";
     }
-
-
-
 }
