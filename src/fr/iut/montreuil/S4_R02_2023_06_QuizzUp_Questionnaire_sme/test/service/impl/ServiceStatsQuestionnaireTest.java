@@ -30,27 +30,29 @@ public class ServiceStatsQuestionnaireTest {
         statsQuestionDTO.setNbOk(2);
         statsQuestions.add(statsQuestionDTO);
         statsQuestions.add(new StatsQuestDTO());
-        StatsDTO bilanStatsDTO = new StatsDTO(statsQuestions, 5, 1);
+        StatsDTO bilanStatsDTO = new StatsDTO(statsQuestions, 1, 5);
 
         //creation d'un QuestionnaireDTO
         ArrayList<QuestionDTO> listeQuestions = new ArrayList<>();
-        QuestionDTO questionDTO = new QuestionDTO(0,1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok");
+        QuestionDTO questionDTO = new QuestionDTO(1,1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok");
         listeQuestions.add(questionDTO);
-        listeQuestions.add(new QuestionDTO(0, 1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok"));
-        listeQuestions.add(new QuestionDTO(0, 1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok"));
-        QuestionnaireDTO questionnaireDTO = new QuestionnaireDTO(1, listeQuestions, 0);
-        questionnaireDTO.setNbjouer(5);
+        listeQuestions.add(new QuestionDTO(1, 2, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok"));
+        listeQuestions.add(new QuestionDTO(1, 3, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok"));
+        QuestionnaireDTO questionnaireDTO = new QuestionnaireDTO(1, listeQuestions, 5);
 
-        Assertions.assertEquals(bilanStatsDTO.toString(), serviceStatsQuestionnaireTest.fournirStatsQuestionnaire(questionnaireDTO).toString());
+        Assertions.assertEquals(bilanStatsDTO.getStatQuestDTO(), serviceStatsQuestionnaireTest.fournirStatsQuestionnaire(questionnaireDTO).getStatQuestDTO());
     }
 
-    public void statsQuestionsIncorrectIncorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions {
+    public void statsQuestionnaireIncorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions, IdQuestionnaireIncorrectExeptions {
 
     }
 
-    
-    public void nbFoisJoueQuestionnaireIncorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions {
+    public void nbFoisJoueQuestionnaireIncorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions, IdQuestionnaireIncorrectExeptions {
         
+    }
+
+    public void idQuestionnaireIncorrect () throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions, IdQuestionnaireIncorrectExeptions {
+
     }
 
 

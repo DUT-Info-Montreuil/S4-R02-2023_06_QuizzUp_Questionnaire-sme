@@ -14,6 +14,12 @@ public class ServiceStatsQuestionnaireMockCorrect implements IServiceStatsQuesti
 
     @Override
     public StatsDTO fournirStatsQuestionnaire(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions, IdQuestionnaireIncorrectExeptions {
-        return null;
+        ArrayList<StatsQuestDTO> statsQuestions = new ArrayList<>();
+        StatsQuestDTO statsQuestionDTO = new StatsQuestDTO();
+        statsQuestionDTO.setNbjouer(5);
+        statsQuestionDTO.setNbOk(2);
+        statsQuestions.add(statsQuestionDTO);
+        statsQuestions.add(new StatsQuestDTO());
+        return new StatsDTO(statsQuestions, 1, 5);
     }
 }
