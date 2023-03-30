@@ -7,18 +7,14 @@ public class StatsQuestDTO{
     private int difficulte;
     private int numero;
 
-    public StatsQuestDTO(int nbjouer, int nbOk, int difficulte, int numero) {
+    public StatsQuestDTO(int nbjouer, int nbOk, int numero, int difficulte) {
         this.nbjouer = 0;
         this.nbOk = 0;
-        this.difficulte =difficulte;
-        this.numero = numero;
+        this.numero=numero;
+        this.difficulte=difficulte;
     }
 
     public StatsQuestDTO() {
-    }
-
-    public int getNbjouer() {
-        return nbjouer;
     }
 
     public int getDifficulte() {
@@ -27,6 +23,18 @@ public class StatsQuestDTO{
 
     public void setDifficulte(int difficulte) {
         this.difficulte = difficulte;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public int getNbjouer() {
+        return nbjouer;
     }
 
     public void setNbjouer(int nbjouer) {
@@ -49,13 +57,7 @@ public class StatsQuestDTO{
         nbOk++;
     }
 
-    public int getNumero() {
-        return numero;
-    }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
 
     @Override
     public String toString() {

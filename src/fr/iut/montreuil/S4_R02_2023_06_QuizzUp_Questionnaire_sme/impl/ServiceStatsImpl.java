@@ -16,6 +16,56 @@ public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
 
     @Override
     public StatsDTO fournirStatsQuestionnaire(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions, IdQuestionnaireIncorrectExeptions {
-        return null;
+        int idQuestionnaire = questionnaire.getId_questionnaire();
+        if (idQuestionnaire <= 0) {
+            throw new IdQuestionnaireIncorrectExeptions();
+        }
+
+
+        int nbDeFoisJoueQuestionnaire = questionnaire.getNbjouer();
+        if (nbDeFoisJoueQuestionnaire < 0) {
+            throw new NbFoisJoueQuestionnaireIncorrectExeptions();
+        }
+
+
+        ArrayList<QuestionDTO> questions = questionnaire.getQuestions();
+        if (questions == null || questions.isEmpty()) {
+            throw new StatsQuestionsIncorrectExeptions();
+        }
+
+        ArrayList<StatsQuestDTO> statsQuestions = new ArrayList<>();
+
+        for (QuestionDTO question : questions) {
+
+            int idQuestion = question.getNumero();
+            if (idQuestion <= 0) {
+                throw new StatsQuestionsIncorrectExeptions();
+            }
+
+            int nbDeFoisJoueQuestion = question.getStats().getNbjouer();
+            if (nbDeFoisJoueQuestion < 0) {
+                throw new StatsQuestionsIncorrectExeptions();
+            }
+
+            int nbDeFoisReponseCorrecte = question.getStats().getNbOk();
+            if (nbDeFoisReponseCorrecte < 0 ) {
+                throw new StatsQuestionsIncorrectExeptions();
+            }
+
+            if (nbDeFoisJoueQuestion < nbDeFoisReponseCorrecte){
+                throw new StatsQuestionsIncorrectExeptions();
+            }
+
+            if(nbDeFoisJoueQuestion>nbDeFoisJoueQuestionnaire){
+                throw new StatsQuestionsIncorrectExeptions();
+            }
+
+            StatsQuestDTO statsQuestion = new StatsQuestDTO(nbDeFoisJoueQuestion, nbDeFoisReponseCorrecte);
+            statsQuestions.add(statsQuestion);
+        }
+
+
+        StatsDTO bilanStats = new StatsDTO(statsQuestions, idQuestionnaire, nbDeFoisJoueQuestionnaire);
+        return bilanStats;
     }
 }
