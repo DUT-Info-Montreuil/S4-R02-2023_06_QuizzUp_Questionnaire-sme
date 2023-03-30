@@ -15,26 +15,7 @@ import java.util.Comparator;
 public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
 
     @Override
-    public StatsDTO fournirStatsQuestions(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions, IdQuestionnaireIncorrectExeptions {
+    public StatsDTO fournirStatsQuestionnaire(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions, IdQuestionnaireIncorrectExeptions {
         return null;
-    }
-
-    @Override
-    public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions) {
-        questions.sort(Comparator.comparing(StatsQuestDTO::getNbOk).reversed()
-                .thenComparing(StatsQuestDTO::getDifficulte).reversed()
-                .thenComparingInt(StatsQuestDTO::getNbjouer)
-                .thenComparing(StatsQuestDTO::getNumero));
-        return questions.get(0);
-    }
-
-
-    @Override
-    public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions) {
-        questions.sort(Comparator.comparing(StatsQuestDTO::getNbOk)
-                .thenComparing(StatsQuestDTO::getDifficulte)
-                .thenComparingInt(StatsQuestDTO::getNbjouer)
-                .thenComparing(StatsQuestDTO::getNumero));
-        return questions.get(0);
     }
 }

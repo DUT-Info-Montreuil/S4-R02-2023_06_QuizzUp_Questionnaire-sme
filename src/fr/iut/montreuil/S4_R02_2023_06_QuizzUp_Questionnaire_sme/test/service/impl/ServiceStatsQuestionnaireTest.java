@@ -1,4 +1,5 @@
 package fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.test.service.impl;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.IdQuestionnaireIncorrectExeptions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,7 @@ public class ServiceStatsQuestionnaireTest {
     private IServiceStatsQuestionnaire serviceStatsQuestionnaireTest;
 
     @Test
-    public void statsQuestionnaireCorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions {
+    public void statsQuestionnaireCorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions, IdQuestionnaireIncorrectExeptions {
         serviceStatsQuestionnaireTest = new ServiceStatsQuestionnaireMockCorrect();
 
         //creation d'un StatsDTO
@@ -38,7 +39,7 @@ public class ServiceStatsQuestionnaireTest {
         QuestionnaireDTO questionnaireDTO = new QuestionnaireDTO(1, listeQuestions, 0);
         questionnaireDTO.setNbjouer(5);
 
-        Assertions.assertEquals(bilanStatsDTO.toString(), serviceStatsQuestionnaireTest.fournirStatsQuestions(questionnaireDTO).toString());
+        Assertions.assertEquals(bilanStatsDTO.toString(), serviceStatsQuestionnaireTest.fournirStatsQuestionnaire(questionnaireDTO).toString());
     }
 
     public void statsQuestionsIncorrectIncorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions {
