@@ -39,7 +39,7 @@ public class ServiceStatsQuestionnaireTest {
         QuestionnaireDTO questionnaireDTO = new QuestionnaireDTO(1, listeQuestions, 0);
         questionnaireDTO.setNbjouer(5);
 
-        Assertions.assertEquals(bilanStatsDTO.toString(), serviceStatsQuestionnaireTest.fournirStatsQuestions(questionnaireDTO).toString());
+        Assertions.assertEquals(bilanStatsDTO.toString(), serviceStatsQuestionnaireTest.fournirStatsQuestionnaire(questionnaireDTO).toString());
     }
 
     public void statsQuestionsIncorrectIncorrect() throws StatsQuestionsIncorrectExeptions, NbFoisJoueQuestionnaireIncorrectExeptions {
