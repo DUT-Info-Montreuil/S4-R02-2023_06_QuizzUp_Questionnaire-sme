@@ -11,20 +11,33 @@ import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServic
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
+    public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
+        private StatsQuestDTO statsQuestDTO = new StatsQuestDTO();
+        @Override
+        public StatsDTO fournirStatsQuestions(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions {
+            return null;
+        }
 
-    @Override
-    public StatsDTO fournirStatsQuestions(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions {
-        return null;
+        @Override
+        public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions) {
+            questions.sort(Comparator.comparing(StatsQuestDTO::getNbOk).reversed()
+                    .thenComparing(StatsQuestDTO::getDifficulte).reversed()
+                    .thenComparingInt(StatsQuestDTO::getNbjouer)
+                    .thenComparing(StatsQuestDTO::getNumero));
+
+            return questions.get(0);
+        }
+
+
+        @Override
+        public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions) {
+            questions.sort(Comparator.comparing(StatsQuestDTO::getNbOk)
+                    .thenComparing(StatsQuestDTO::getDifficulte)
+                    .thenComparingInt(StatsQuestDTO::getNbjouer)
+                    .thenComparing(StatsQuestDTO::getNumero));
+
+            return questions.get(0);
+        }
+
     }
 
-    @Override
-    public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions) {
-        return null;
-    }
-
-    @Override
-    public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions) {
-        return null;
-    }
-}
