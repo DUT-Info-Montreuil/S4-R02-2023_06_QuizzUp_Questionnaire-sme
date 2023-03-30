@@ -1,7 +1,6 @@
-package fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.test.service.mock;
+package fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.impl;
 
-import java.util.ArrayList;
-
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.QuestionDTO;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.QuestionnaireDTO;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.StatsDTO;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.StatsQuestDTO;
@@ -9,25 +8,23 @@ import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.StatsQuestionsIncorrectExeptions;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceStatsQuestionnaire;
 
-public class ServiceStatsQuestionnaireMockNbDeFoisJoueQuestionnaireIncorrect implements IServiceStatsQuestionnaire {
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
 
     @Override
-    public StatsDTO fournirStatsQuestions(QuestionnaireDTO questionnaire)
-            throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'fournirStatsQuestions'");
+    public StatsDTO fournirStatsQuestions(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions {
+        return null;
     }
 
     @Override
     public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'trouverQuestionLaPlusFacile'");
+        return null;
     }
 
     @Override
     public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'trouverQuestionLaPlusDure'");
+        return null;
     }
-    
 }

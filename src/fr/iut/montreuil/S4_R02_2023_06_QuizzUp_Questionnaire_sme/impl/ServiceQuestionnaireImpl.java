@@ -3,9 +3,9 @@ package fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.impl;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.bo.QuestionnaireBO;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.QuestionDTO;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.QuestionnaireDTO;
-import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierIncorrectExceptions;
-import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierPasTrouveExceptions;
-import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierVideExceptions;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.StatsDTO;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.StatsQuestDTO;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.*;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceQuestion;
 
 import java.io.FileNotFoundException;
@@ -15,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceStatsQuestionnaire;
 
-public class ServiceQuestionnaireImpl implements IServiceQuestion {
+public class ServiceQuestionnaireImpl implements IServiceQuestion, IServiceStatsQuestionnaire {
 
     private QuestionnaireBO questionnaireBO;
 
@@ -84,10 +85,10 @@ public class ServiceQuestionnaireImpl implements IServiceQuestion {
             questionsDTO = new ArrayList<QuestionDTO>();
             idQuestionnaire = questionnaireBO.getIdQuestionnaires().get(i);
             while (i < questionnaireBO.getIdQuestionnaires().size() && questionnaireBO.getIdQuestionnaires().get(i) == idQuestionnaire) {
-                questionsDTO.add(new QuestionDTO(questionnaireBO.getNumQuestions().get(i), questionnaireBO.getLibelles().get(i), questionnaireBO.getReponses().get(i), questionnaireBO.getLangues().get(i), questionnaireBO.getDifficultes().get(i), questionnaireBO.getExplications().get(i), questionnaireBO.getReferences().get(i)));
+                questionsDTO.add(new QuestionDTO(questionnaireBO.getIdQuestionnaires().get(i), questionnaireBO.getNumQuestions().get(i), questionnaireBO.getLibelles().get(i), questionnaireBO.getReponses().get(i), questionnaireBO.getLangues().get(i), questionnaireBO.getDifficultes().get(i), questionnaireBO.getExplications().get(i), questionnaireBO.getReferences().get(i)));
                 i++;
             }
-            questionnairesDTO.add(new QuestionnaireDTO(idQuestionnaire, questionsDTO));
+            questionnairesDTO.add(new QuestionnaireDTO(idQuestionnaire, questionsDTO, 0));
         }
         return questionnairesDTO;
     }
@@ -100,5 +101,20 @@ public class ServiceQuestionnaireImpl implements IServiceQuestion {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public StatsDTO fournirStatsQuestions(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions {
+        return null;
+    }
+
+    @Override
+    public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions) {
+        return null;
+    }
+
+    @Override
+    public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions) {
+        return null;
     }
 }

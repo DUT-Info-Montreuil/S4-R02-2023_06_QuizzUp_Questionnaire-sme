@@ -20,10 +20,10 @@ public class ServiceQuestionnaireChargementTest  {
     @Test
     public void ChargementQuestionnaireCorrect() throws FichierPasTrouveExceptions, FichierVideExceptions, FichierIncorrectExceptions {
         serviceQuestionnaireTest = new ChargementQuestionnaireImplmockOk();
-        QuestionDTO objetattendue = new QuestionDTO(1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok", 0, 0);
+        QuestionDTO objetattendue = new QuestionDTO(1, 1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok");
         ArrayList<QuestionDTO> questionattendue = new ArrayList<QuestionDTO>();
         questionattendue.add(objetattendue);
-        QuestionnaireDTO QuestionnaireCorrect = new QuestionnaireDTO(1, questionattendue);
+        QuestionnaireDTO QuestionnaireCorrect = new QuestionnaireDTO(1, questionattendue, 0);
         ArrayList<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
         reponse.add(QuestionnaireCorrect);
         ArrayList<QuestionnaireDTO> reponsecorrect = (ArrayList<QuestionnaireDTO>) serviceQuestionnaireTest.fournirListeQuestionnaires("questionsQuizz_V1.1.csv");
