@@ -13,6 +13,6 @@ import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServic
 public class ServiceStatsQuestionnaireMockQuestionsIncorrect implements IServiceStatsQuestionnaire {
     @Override
     public StatsDTO fournirStatsQuestionnaire(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions, IdQuestionnaireIncorrectExeptions {
-        return null;
+        throw new StatsQuestionsIncorrectExeptions();
     }
 }
