@@ -8,7 +8,6 @@ import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis.exceptions.FichierVideExceptions;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.impl.ServiceQuestionnaireImpl;
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceQuestion;
-//import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.QuestionDTO;
