@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
-    private StatsQuestDTO statsQuestDTO = new StatsQuestDTO();
+
     @Override
     public StatsDTO fournirStatsQuestions(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions {
         return null;
@@ -20,23 +20,11 @@ public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
 
     @Override
     public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions) {
-        questions.sort(Comparator.comparing(StatsQuestDTO::getNbOk).reversed()
-                .thenComparing(QuestionDTO::getDifficulte).reversed()
-                .thenComparingInt(StatsQuestDTO::getNbjouer)
-                .thenComparing(QuestionDTO::getNumero));
-
-        return questions.get(0);
+        return null;
     }
-
 
     @Override
     public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions) {
-        questions.sort(Comparator.comparing(StatsQuestDTO::getNbOk)
-                .thenComparing(QuestionDTO::getDifficulte)
-                .thenComparingInt(StatsQuestDTO::getNbjouer)
-                .thenComparing(QuestionDTO::getNumero));
-
-        return questions.get(0);
+        return null;
     }
-
 }
