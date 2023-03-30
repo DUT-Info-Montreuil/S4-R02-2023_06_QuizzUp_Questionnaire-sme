@@ -12,9 +12,5 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public interface IServiceStatsQuestionnaire {
-    public StatsDTO fournirStatsQuestions(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions, IdQuestionnaireIncorrectExeptions;
-
-    public StatsQuestDTO trouverQuestionLaPlusFacile(ArrayList<StatsQuestDTO> questions);
-
-    public StatsQuestDTO trouverQuestionLaPlusDure(ArrayList<StatsQuestDTO> questions);
+    public StatsDTO fournirStatsQuestionnaire(QuestionnaireDTO questionnaire) throws NbFoisJoueQuestionnaireIncorrectExeptions, StatsQuestionsIncorrectExeptions, IdQuestionnaireIncorrectExeptions;
 }
