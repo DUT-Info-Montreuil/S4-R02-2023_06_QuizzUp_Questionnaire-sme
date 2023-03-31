@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class    ChargementQuestionnaireImplmockOk implements IServiceQuestion {
+public class ChargementQuestionnaireImplmockOk implements IServiceQuestion {
 
     @Override
     public List<QuestionnaireDTO> fournirListeQuestionnaires(String nomFichier) {
@@ -16,7 +16,7 @@ public class    ChargementQuestionnaireImplmockOk implements IServiceQuestion {
         QuestionDTO Correctquestion = new QuestionDTO();
         ArrayList<QuestionDTO> Correctquestionnaire = new ArrayList<QuestionDTO>();
         Correctquestionnaire.add(Correctquestion);
-        QuestionnaireDTO CorrectQuestionnaire = new QuestionnaireDTO(1, Correctquestionnaire, 1);
+        QuestionnaireDTO CorrectQuestionnaire = new QuestionnaireDTO(1, Correctquestionnaire, 0);
         List<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
         reponse.add(CorrectQuestionnaire);
         return reponse;
