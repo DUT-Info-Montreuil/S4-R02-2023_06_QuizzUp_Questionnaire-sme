@@ -26,9 +26,6 @@ public class QuestionDTO {
         this.stats = new StatsQuestDTO();
     }
 
-    public QuestionDTO() {
-    }
-
 
     public int getIdQuestionnaire() {
         return idQuestionnaire;

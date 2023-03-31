@@ -60,7 +60,7 @@ public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
                 throw new StatsQuestionsIncorrectExeptions();
             }
 
-            StatsQuestDTO statsQuestion = new StatsQuestDTO(nbDeFoisJoueQuestion, nbDeFoisReponseCorrecte, idQuestion);
+            StatsQuestDTO statsQuestion = new StatsQuestDTO(idQuestion);
             statsQuestions.add(statsQuestion);
         }
 

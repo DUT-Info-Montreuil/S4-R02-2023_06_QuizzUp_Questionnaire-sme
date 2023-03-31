@@ -11,15 +11,14 @@ import java.util.List;
 public class ChargementQuestionnaireImplmockOk implements IServiceQuestion {
 
     @Override
-    public List<QuestionnaireDTO> fournirListeQuestionnaires(String nomFichier) {
-
-        QuestionDTO Correctquestion = new QuestionDTO();
-        ArrayList<QuestionDTO> Correctquestionnaire = new ArrayList<QuestionDTO>();
-        Correctquestionnaire.add(Correctquestion);
-        QuestionnaireDTO CorrectQuestionnaire = new QuestionnaireDTO(1, Correctquestionnaire, 0);
-        List<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
-        reponse.add(CorrectQuestionnaire);
-        return reponse;
+    public ArrayList<QuestionnaireDTO> fournirListeQuestionnaires(String nomFichier) {
+        QuestionDTO questionCorrect = new QuestionDTO(1, 1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok");
+        ArrayList<QuestionDTO> listQuestionsCorrect = new ArrayList<>();
+        listQuestionsCorrect.add(questionCorrect);
+        QuestionnaireDTO leQuestionnaireCorrect = new QuestionnaireDTO(1,listQuestionsCorrect, 0);
+        ArrayList<QuestionnaireDTO> reponseCorrect = new ArrayList<QuestionnaireDTO>();
+        reponseCorrect.add(leQuestionnaireCorrect);
+        return reponseCorrect;
     }
 
     @Override

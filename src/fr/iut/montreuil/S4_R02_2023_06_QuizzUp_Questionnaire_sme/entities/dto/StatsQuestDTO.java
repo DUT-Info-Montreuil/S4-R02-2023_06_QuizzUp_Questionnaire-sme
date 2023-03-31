@@ -7,13 +7,15 @@ public class StatsQuestDTO{
     private int difficulte;
     private int numero;
 
-    public StatsQuestDTO(int nbjouer, int nbOk, int numero) {
+    public StatsQuestDTO(int numero) {
         this.nbjouer = 0;
         this.nbOk = 0;
         this.numero=numero;
     }
 
     public StatsQuestDTO() {
+        this.nbjouer = 0;
+        this.nbOk = 0;
     }
 
     public int getDifficulte() {

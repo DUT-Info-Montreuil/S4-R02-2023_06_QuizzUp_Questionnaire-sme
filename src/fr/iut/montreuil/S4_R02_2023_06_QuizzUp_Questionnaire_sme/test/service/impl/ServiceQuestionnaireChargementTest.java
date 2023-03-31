@@ -20,18 +20,20 @@ public class ServiceQuestionnaireChargementTest  {
     
     private IServiceQuestion serviceQuestionnaireTest;
     @Test
-    public void ChargementQuestionnaireCorrect() throws FichierPasTrouveExceptions, FichierVideExceptions, FichierIncorrectExceptions {
+    public void chargementQuestionnaireCorrect() throws FichierPasTrouveExceptions, FichierVideExceptions, FichierIncorrectExceptions {
         serviceQuestionnaireTest = new ChargementQuestionnaireImplmockOk();
-        QuestionDTO objetattendue = new QuestionDTO(1, 1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok");
-        ArrayList<QuestionDTO> questionattendue = new ArrayList<QuestionDTO>();
-        questionattendue.add(objetattendue);
-        QuestionnaireDTO QuestionnaireCorrect = new QuestionnaireDTO(1, questionattendue, 0);
-        ArrayList<QuestionnaireDTO> reponse = new ArrayList<QuestionnaireDTO>();
-        reponse.add(QuestionnaireCorrect);
-        ArrayList<QuestionnaireDTO> reponsecorrect = (ArrayList<QuestionnaireDTO>) serviceQuestionnaireTest.fournirListeQuestionnaires("questionsQuizz_V1.1.csv");
-        Assertions.assertEquals(QuestionnaireCorrect.getId_questionnaire(), reponsecorrect.get(0).getId_questionnaire());
-        Assertions.assertEquals(reponse.get(0).getQuestions().get(0).getLibelle(), reponsecorrect.get(0).getQuestions().get(0).getLibelle());
+        QuestionDTO questionCorrect = new QuestionDTO(1, 1, "FR", "De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?", "GG", 1, "yes", "ok");
+        ArrayList<QuestionDTO> listQuestionsCorrect = new ArrayList<QuestionDTO>();
+        listQuestionsCorrect.add(questionCorrect);
+        QuestionnaireDTO leQuestionnaireCorrect = new QuestionnaireDTO(1,listQuestionsCorrect, 0);
+        ArrayList<QuestionnaireDTO> reponseCorrect = new ArrayList<QuestionnaireDTO>();
+        reponseCorrect.add(leQuestionnaireCorrect);
+        ArrayList<QuestionnaireDTO> bonnereponse = (ArrayList<QuestionnaireDTO>) serviceQuestionnaireTest.fournirListeQuestionnaires("questionsQuizz_V1.1.csv");
+        Assertions.assertEquals(leQuestionnaireCorrect.getQuestions().get(0).getReponse(),bonnereponse.get(0).getQuestions().get(0).getReponse());
+        Assertions.assertEquals(leQuestionnaireCorrect.getQuestions().get(0).getLibelle(),bonnereponse.get(0).getQuestions().get(0).getLibelle());
+
     }
+    
     @Test
     public void chargementQuestionnaireIncorrect() throws FichierIncorrectExceptions, FichierPasTrouveExceptions, FichierVideExceptions {
         serviceQuestionnaireTest = new ChargementQuestionnaireImplmockInvalide();
