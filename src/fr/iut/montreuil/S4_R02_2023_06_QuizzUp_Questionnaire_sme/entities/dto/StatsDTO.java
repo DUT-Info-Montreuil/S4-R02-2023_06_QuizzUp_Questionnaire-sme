@@ -10,7 +10,7 @@ public class StatsDTO{
 
     
     public StatsDTO(ArrayList<StatsQuestDTO> statQuestDTO, int idQuestionnaire, int nbJouer) {
-        this.statQuestDTO = new ArrayList<StatsQuestDTO>();
+        this.statQuestDTO = statQuestDTO;
         this.idQuestionnaire = idQuestionnaire;
         this.nbJouer = nbJouer;
     }
