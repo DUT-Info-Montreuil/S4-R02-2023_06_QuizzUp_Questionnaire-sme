@@ -1,7 +1,6 @@
 package fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class StatsDTO{
     private ArrayList<StatsQuestDTO> statQuestDTO;
@@ -10,7 +9,7 @@ public class StatsDTO{
 
     
     public StatsDTO(ArrayList<StatsQuestDTO> statQuestDTO, int idQuestionnaire, int nbJouer) {
-        this.statQuestDTO = statQuestDTO;
+        this.statQuestDTO = new ArrayList<>();
         this.idQuestionnaire = idQuestionnaire;
         this.nbJouer = nbJouer;
     }

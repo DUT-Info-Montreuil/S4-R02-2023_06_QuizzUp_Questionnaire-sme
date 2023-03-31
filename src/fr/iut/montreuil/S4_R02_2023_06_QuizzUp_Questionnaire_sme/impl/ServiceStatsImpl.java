@@ -10,7 +10,6 @@ import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.utilis
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceStatsQuestionnaire;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class ServiceStatsImpl implements IServiceStatsQuestionnaire {
 

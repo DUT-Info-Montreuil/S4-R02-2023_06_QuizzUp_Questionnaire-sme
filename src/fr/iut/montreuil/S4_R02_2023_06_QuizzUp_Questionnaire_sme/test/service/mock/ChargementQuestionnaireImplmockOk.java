@@ -5,7 +5,6 @@ import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.entities.dto.Qu
 import fr.iut.montreuil.S4_R02_2023_06_QuizzUp_Questionnaire_sme.modeles.IServiceQuestion;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class ChargementQuestionnaireImplmockOk implements IServiceQuestion {
